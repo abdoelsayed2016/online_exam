@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStaffQuestionsAnswersTable extends Migration
+class CreateStudentQuestionAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateStaffQuestionsAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('student_questions_answers', function (Blueprint $table) {
+        Schema::create('student_question_answers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('QUESTION_ID');
-            $table->double('Student_Points')->nullable();
-            $table->integer('STUDENT_COURSE_EXAM_ID');
-            $table->text('QUESTION_ANSWER')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateStaffQuestionsAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('staff_questions_answers');
+        Schema::dropIfExists('student_question_answers');
     }
 }

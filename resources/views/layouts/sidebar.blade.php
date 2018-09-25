@@ -17,6 +17,10 @@
             <a href="add-student.html" class="waves-effect"><i class="fa fa-users" aria-hidden="true"></i> <span> Students  </span> </a>
         </li>
 
+        <li>
+            <a href="{{route('faclities.index')}}" class="waves-effect"><i class="fa fa-user" aria-hidden="true"></i> <span> Facultites </span> </a>
+        </li>
+
 
 
 

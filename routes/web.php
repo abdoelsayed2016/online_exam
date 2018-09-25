@@ -18,3 +18,21 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::group( [ 'prefix' => '/admin', 'middleware' => [ 'auth' ] ], function () {
+    Route::prefix( 'courses' )->group( function () {
+
+        Route::get( '/', 'admin\CoursesController@index' )->name( 'courses.index' );
+
+        Route::get( '/create', 'admin\CoursesController@create' )->name( 'courses.create' );
+
+        Route::post( '/store', 'admin\CoursesController@store' )->name( 'courses.store' );
+
+        Route::get( '/{product}/show', 'admin\CoursesController@show' )->name( 'courses.show' );
+
+        Route::get( '/{product}/edit', 'admin\CoursesController@edit' )->name( 'courses.edit' );
+
+        Route::put( '/{product}/update', 'admin\CoursesController@update' )->name( 'courses.update' );
+
+        Route::delete( '/{product}/destroy', 'admin\CoursesController@destroy' )->name( 'courses.destroy' );
+    } );
+});

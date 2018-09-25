@@ -1,23 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+        <div class="col-sm-12 search-box">
+            <div class="panel">
+                <div class="form-group">
+                    <fieldset class="the-fieldset">
+                        <H1 style="text-align: center">Welcome {{auth()->user()->name}}</H1>
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+                    </fieldset>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

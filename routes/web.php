@@ -35,4 +35,21 @@ Route::group( [ 'prefix' => '/admin', 'middleware' => [ 'auth' ] ], function () 
 
         Route::delete( '/{product}/destroy', 'admin\CoursesController@destroy' )->name( 'courses.destroy' );
     } );
+
+    Route::prefix( 'faclities' )->group( function () {
+
+        Route::get( '/', 'admin\FaclitiesController@index' )->name( 'faclities.index' );
+
+        Route::get( '/create', 'admin\FaclitiesController@create' )->name( 'faclities.create' );
+
+        Route::post( '/store', 'admin\FaclitiesController@store' )->name( 'faclities.store' );
+
+        Route::get( '/{faculty}/show', 'admin\FaclitiesController@show' )->name( 'faclities.show' );
+
+        Route::get( '/{faculty}/edit', 'admin\FaclitiesController@edit' )->name( 'faclities.edit' );
+
+        Route::put( '/{faculty}/update', 'admin\FaclitiesController@update' )->name( 'faclities.update' );
+
+        Route::delete( '/{faculty}/destroy', 'admin\FaclitiesController@destroy' )->name( 'faclities.destroy' );
+    } );
 });

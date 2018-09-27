@@ -18,4 +18,17 @@ class FaclitiesController extends Controller
 		$faculty->save();
 		return redirect()->route('faclities.index');
 	}//end of store
+    public function update(Request $request, Faculty $faculty)
+    {
+        $faculty->FACULTY_NAME = $request->name;
+        $faculty->save();
+        return redirect()->route('faclities.index');
+
+    }//end of update
+    public function destroy(Faculty $faculty)
+    {
+        $faculty->delete();
+        return redirect()->route('faclities.index');
+
+    }//end of destroy
 }

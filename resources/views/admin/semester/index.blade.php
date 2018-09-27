@@ -9,7 +9,7 @@
                 <div class="panel-body">
 
                     <div class="col-lg-12">
-                        @include('admin.faculities.create')
+                        @include('admin.semester.create')
                     </div><!-- end col -->
 
 
@@ -26,29 +26,29 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($faculties as $k=>$faculity)
+                            @foreach($semesters as $k=>$semester)
                                 <tr class="gradeX">
                                     <th>{{$k+1}}</th>
-                                    <th> {{$faculity->FACULTY_NAME}}</th>
+                                    <th> {{$semester->SEMESTER_DESCR}}</th>
                                     <th style="display:none"></th>
                                     <th class="actions">
 
                                         <a href="#" class="on-default " data-toggle="modal"
-                                           data-target="#con-close-modal_{{$faculity->id}}">
+                                           data-target="#con-close-modal_{{$semester->id}}">
                                             <i style="color: white;padding: 8px 10px;background-color: #10c469 !important;border: 1px solid #10c469 !important;
 " class="fa fa-pencil"></i></a>
-                                        <a href="#" data-toggle="modal" data-target="#dialog_{{$faculity->id}}"
+                                        <a href="#" data-toggle="modal" data-target="#dialog_{{$semester->id}}"
                                            class="on-default ">
                                             <i style="color: white; background-color: #ff5b5b !important; border: 1px solid #ff5b5b !important;padding: 8px 10px;" class="fa fa-trash-o">
                                             </i>
                                         </a>
                                         <!-- <a  class="on-default btn-info"  > <i class="fa fa-keyboard-o"></i> </a> -->
                                     </th>
-                                    @include('admin.faculities.edit')
+                                    @include('admin.semester.edit')
                                     <?php
-                                    $route=route('faclities.destroy',$faculity->id);
-                                    $id= $faculity->id;
-                                    $message="Do You Want To Delete This Faculty ?";
+                                    $route=route('semester.destroy',$semester->id);
+                                    $id= $semester->id;
+                                    $message="Do You Want To Delete This Semester ?";
                                     ?>
                                     @include('layouts.delete')
                                 </tr>

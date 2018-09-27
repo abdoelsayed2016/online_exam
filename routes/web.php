@@ -86,4 +86,52 @@ Route::group( [ 'prefix' => '/admin', 'middleware' => [ 'auth' ] ], function () 
 
         Route::post( '/get/department', 'admin\StudentsController@getDepartment' )->name( 'students.getDepartment' );
     } );
+    Route::prefix( 'IlosType' )->group( function () {
+
+        Route::get( '/', 'admin\IlosTypeController@index' )->name( 'IlosType.index' );
+
+        Route::get( '/create', 'admin\IlosTypeController@create' )->name( 'IlosType.create' );
+
+        Route::post( '/store', 'admin\IlosTypeController@store' )->name( 'IlosType.store' );
+
+        Route::get( '/{ilosType}/show', 'admin\IlosTypeController@show' )->name( 'IlosType.show' );
+
+        Route::get( '/{ilosType}/edit', 'admin\IlosTypeController@edit' )->name( 'IlosType.edit' );
+
+        Route::put( '/{ilosType}/update', 'admin\IlosTypeController@update' )->name( 'IlosType.update' );
+
+        Route::delete( '/{ilosType}/destroy', 'admin\IlosTypeController@destroy' )->name( 'IlosType.destroy' );
+    } );
+    Route::prefix( 'questionType' )->group( function () {
+
+        Route::get( '/', 'admin\QuestionTypeController@index' )->name( 'questionType.index' );
+
+        Route::get( '/create', 'admin\QuestionTypeController@create' )->name( 'questionType.create' );
+
+        Route::post( '/store', 'admin\QuestionTypeController@store' )->name( 'questionType.store' );
+
+        Route::get( '/{quetype}/show', 'admin\QuestionTypeController@show' )->name( 'questionType.show' );
+
+        Route::get( '/{quetype}/edit', 'admin\QuestionTypeController@edit' )->name( 'questionType.edit' );
+
+        Route::put( '/{quetype}/update', 'admin\QuestionTypeController@update' )->name( 'questionType.update' );
+
+        Route::delete( '/{quetype}/destroy', 'admin\QuestionTypeController@destroy' )->name( 'questionType.destroy' );
+    } );
+    Route::prefix( 'semester' )->group( function () {
+
+        Route::get( '/', 'admin\SemesterController@index' )->name( 'semester.index' );
+
+        Route::get( '/create', 'admin\SemesterController@create' )->name( 'semester.create' );
+
+        Route::post( '/store', 'admin\SemesterController@store' )->name( 'semester.store' );
+
+        Route::get( '/{semester}/show', 'admin\SemesterController@show' )->name( 'semester.show' );
+
+        Route::get( '/{semester}/edit', 'admin\SemesterController@edit' )->name( 'semester.edit' );
+
+        Route::put( '/{semester}/update', 'admin\SemesterController@update' )->name( 'semester.update' );
+
+        Route::delete( '/{semester}/destroy', 'admin\SemesterController@destroy' )->name( 'semester.destroy' );
+    } );
 });

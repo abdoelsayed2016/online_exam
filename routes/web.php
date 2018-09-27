@@ -52,4 +52,38 @@ Route::group( [ 'prefix' => '/admin', 'middleware' => [ 'auth' ] ], function () 
 
         Route::delete( '/{faculty}/destroy', 'admin\FaclitiesController@destroy' )->name( 'faclities.destroy' );
     } );
+    Route::prefix( 'departments' )->group( function () {
+
+        Route::get( '/', 'admin\DepartmentsController@index' )->name( 'departments.index' );
+
+        Route::get( '/create', 'admin\DepartmentsController@create' )->name( 'departments.create' );
+
+        Route::post( '/store', 'admin\DepartmentsController@store' )->name( 'departments.store' );
+
+        Route::get( '/{department}/show', 'admin\DepartmentsController@show' )->name( 'departments.show' );
+
+        Route::get( '/{department}/edit', 'admin\DepartmentsController@edit' )->name( 'departments.edit' );
+
+        Route::put( '/{department}/update', 'admin\DepartmentsController@update' )->name( 'departments.update' );
+
+        Route::delete( '/{department}/destroy', 'admin\DepartmentsController@destroy' )->name( 'departments.destroy' );
+    } );
+    Route::prefix( 'students' )->group( function () {
+
+        Route::get( '/', 'admin\StudentsController@index' )->name( 'students.index' );
+
+        Route::get( '/create', 'admin\StudentsController@create' )->name( 'students.create' );
+
+        Route::post( '/store', 'admin\StudentsController@store' )->name( 'students.store' );
+
+        Route::get( '/{student}/show', 'admin\StudentsController@show' )->name( 'students.show' );
+
+        Route::get( '/{student}/edit', 'admin\StudentsController@edit' )->name( 'students.edit' );
+
+        Route::put( '/{student}/update', 'admin\StudentsController@update' )->name( 'students.update' );
+
+        Route::delete( '/{student}/destroy', 'admin\StudentsController@destroy' )->name( 'students.destroy' );
+
+        Route::post( '/get/department', 'admin\StudentsController@getDepartment' )->name( 'students.getDepartment' );
+    } );
 });

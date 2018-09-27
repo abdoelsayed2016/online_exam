@@ -14,12 +14,16 @@
 
 
         <li>
-            <a href="add-student.html" class="waves-effect"><i class="fa fa-users" aria-hidden="true"></i> <span> Students  </span> </a>
+            <a href="{{route('students.index')}}" class="waves-effect"><i class="fa fa-users" aria-hidden="true"></i> <span> Students  </span> </a>
         </li>
 
         <li>
-            <a href="{{route('faclities.index')}}" class="waves-effect"><i class="fa fa-user" aria-hidden="true"></i> <span> Facultites </span> </a>
+            <a href="{{route('faclities.index')}}" class="waves-effect"><i class="fa fa-user" aria-hidden="true"></i> <span> Faculties </span> </a>
         </li>
+        <li>
+            <a href="{{route('departments.index')}}" class="waves-effect"><i class="fa fa-user" aria-hidden="true"></i> <span> Departments </span> </a>
+        </li>
+
 
 
 

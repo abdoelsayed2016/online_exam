@@ -9,7 +9,7 @@
                 <div class="panel-body">
 
                     <div class="col-lg-12">
-                        @include('admin.faculities.create')
+                        @include('admin.ilosType.create')
                     </div><!-- end col -->
 
 
@@ -26,29 +26,29 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($faculties as $k=>$faculity)
+                            @foreach($ilosType as $k=>$iloType)
                                 <tr class="gradeX">
                                     <th>{{$k+1}}</th>
-                                    <th> {{$faculity->FACULTY_NAME}}</th>
+                                    <th> {{$iloType->ILO_TYPE_DESCR}}</th>
                                     <th style="display:none"></th>
                                     <th class="actions">
 
                                         <a href="#" class="on-default " data-toggle="modal"
-                                           data-target="#con-close-modal_{{$faculity->id}}">
+                                           data-target="#con-close-modal_{{$iloType->id}}">
                                             <i style="color: white;padding: 8px 10px;background-color: #10c469 !important;border: 1px solid #10c469 !important;
 " class="fa fa-pencil"></i></a>
-                                        <a href="#" data-toggle="modal" data-target="#dialog_{{$faculity->id}}"
+                                        <a href="#" data-toggle="modal" data-target="#dialog_{{$iloType->id}}"
                                            class="on-default ">
                                             <i style="color: white; background-color: #ff5b5b !important; border: 1px solid #ff5b5b !important;padding: 8px 10px;" class="fa fa-trash-o">
                                             </i>
                                         </a>
                                         <!-- <a  class="on-default btn-info"  > <i class="fa fa-keyboard-o"></i> </a> -->
                                     </th>
-                                    @include('admin.faculities.edit')
+                                    @include('admin.ilosType.edit')
                                     <?php
-                                    $route=route('faclities.destroy',$faculity->id);
-                                    $id= $faculity->id;
-                                    $message="Do You Want To Delete This Faculty ?";
+                                    $route=route('IlosType.destroy', $iloType->id);
+                                    $id= $iloType->id;
+                                    $message="Do You Want To Delete This Ilos Type ?";
                                     ?>
                                     @include('layouts.delete')
                                 </tr>

@@ -23,6 +23,16 @@
         <li>
             <a href="{{route('departments.index')}}" class="waves-effect"><i class="fa fa-user" aria-hidden="true"></i> <span> Departments </span> </a>
         </li>
+        <li>
+            <a href="{{route('IlosType.index')}}" class="waves-effect"><i class="fa fa-book" aria-hidden="true"></i><span>   Ilos Type </span> </a>
+        </li>
+        <li>
+            <a href="{{route('questionType.index')}}" class="waves-effect"><i class="fa fa-book" aria-hidden="true"></i><span>   Question Type </span> </a>
+        </li>
+
+        <li>
+            <a href="{{route('semester.index')}}" class="waves-effect"><i class="fa fa-book" aria-hidden="true"></i><span>   Semester </span> </a>
+        </li>
 
 
 

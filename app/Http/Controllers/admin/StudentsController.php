@@ -40,11 +40,18 @@ class StudentsController extends Controller
     }//end of destroy
     public function getDepartment(Request $request)
     {
+        $depart_select='';
+        if($request->depart)
+            $depart_select=$request->depart;
         $departments=Department::where('FACULTY_ID',$request->id)->get();
-        $data='';
+        $data='<option> select department</option>';
+
         foreach ($departments as $department)
         {
-            $data.='<option value="'.$department->id.'">'.$department->DEPARTMENT_NAME.'</option>';
+            $data.='<option ';
+//            if($depart_select ==$department->id)
+//                $data.= ' selected';
+            $data.= ' value="'.$department->id.'">'.$department->DEPARTMENT_NAME.'</option>';
         }
         return $data;
     }

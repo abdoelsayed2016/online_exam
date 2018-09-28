@@ -27,13 +27,13 @@ Route::group( [ 'prefix' => '/admin', 'middleware' => [ 'auth' ] ], function () 
 
         Route::post( '/store', 'admin\CoursesController@store' )->name( 'courses.store' );
 
-        Route::get( '/{product}/show', 'admin\CoursesController@show' )->name( 'courses.show' );
+        Route::get( '/{course}/show', 'admin\CoursesController@show' )->name( 'courses.show' );
 
-        Route::get( '/{product}/edit', 'admin\CoursesController@edit' )->name( 'courses.edit' );
+        Route::get( '/{course}/edit', 'admin\CoursesController@edit' )->name( 'courses.edit' );
 
-        Route::put( '/{product}/update', 'admin\CoursesController@update' )->name( 'courses.update' );
+        Route::put( '/{course}/update', 'admin\CoursesController@update' )->name( 'courses.update' );
 
-        Route::delete( '/{product}/destroy', 'admin\CoursesController@destroy' )->name( 'courses.destroy' );
+        Route::delete( '/{course}/destroy', 'admin\CoursesController@destroy' )->name( 'courses.destroy' );
     } );
 
     Route::prefix( 'faclities' )->group( function () {

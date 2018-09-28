@@ -18,6 +18,7 @@ class CreateStaffTable extends Migration
             $table->text('STAFF_NAME')->nullable();
             $table->integer('FACULTY_ID')->nullable();
             $table->integer('DEPARTMENT_ID')->nullable();
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

@@ -3,7 +3,7 @@
 
 
         <li>
-            <a href="add-doctors.html" class="waves-effect"><i class="fa fa-user" aria-hidden="true"></i> <span> Doctors </span> </a>
+            <a href="{{route('doctor.index')}}" class="waves-effect"><i class="fa fa-user" aria-hidden="true"></i> <span> Doctors </span> </a>
         </li>
         <li>
             <a href="add-students-Affairs.html" class="waves-effect"><i class="fa fa-users" aria-hidden="true"></i> <span> Students Affairs </span> </a>

@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Staff extends Model
 {
-    //
+  public function courses()
+ {
+     return $this->belongsToMany('App\Course');
+ }
+ public  function faculity()
+ {
+     return $this->belongsTo('App\Faculty','FACULTY_ID','id');
+ }
 }

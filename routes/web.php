@@ -134,4 +134,20 @@ Route::group( [ 'prefix' => '/admin', 'middleware' => [ 'auth' ] ], function () 
 
         Route::delete( '/{semester}/destroy', 'admin\SemesterController@destroy' )->name( 'semester.destroy' );
     } );
+    Route::prefix( 'doctor' )->group( function () {
+
+        Route::get( '/', 'admin\DoctorController@index' )->name( 'doctor.index' );
+
+        Route::get( '/create', 'admin\DoctorController@create' )->name( 'doctor.create' );
+
+        Route::post( '/store', 'admin\DoctorController@store' )->name( 'doctor.store' );
+
+        Route::get( '/{doctor}/show', 'admin\DoctorController@show' )->name( 'doctor.show' );
+
+        Route::get( '/{doctor}/edit', 'admin\DoctorController@edit' )->name( 'doctor.edit' );
+
+        Route::put( '/{doctor}/update', 'admin\DoctorController@update' )->name( 'doctor.update' );
+
+        Route::delete( '/{doctor}/destroy', 'admin\DoctorController@destroy' )->name( 'doctor.destroy' );
+    } );
 });

@@ -6,11 +6,11 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title">Edit Courses </h4>
             </div>
-            <form action="{{route('courses.update',$course->id)}}"  method="post" data-parsley-validate novalidate enctype="multipart/form-data">
+            <form action="{{route('courses.update',$course->id)}}"  method="post" enctype="multipart/form-data" >
 
             {{ csrf_field() }}
 
-            {{ method_field('PUT') }}
+
             <div class="modal-body">
                 <div class="row">
                     <div class="row">
@@ -64,7 +64,8 @@
                         </div>
                         <div class="col-md-6">
                             <h4 class="header-title m-t-0 m-b-30">Add Photo</h4>
-                            <input type="file" name="file1" class="dropify" data-default-file="{{asset('courses/'.$course->COURSE_IMAGE)}}" />
+                            <input type="file" name="file" class="dropify" data-default-file="{{asset('courses/'.$course->COURSE_IMAGE)}}" />
+
                         </div><!-- end col -->
                     </div>
                 </div>

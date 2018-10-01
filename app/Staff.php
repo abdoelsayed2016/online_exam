@@ -10,8 +10,8 @@ class Staff extends Model
  {
      return $this->belongsToMany('App\Course');
  }
- public  function faculity()
+ public function department()
  {
-     return $this->belongsTo('App\Faculty','FACULTY_ID','id');
+     return $this->belongsTo('App\Department','DEPARTMENT_ID');
  }
 }

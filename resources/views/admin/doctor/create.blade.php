@@ -31,22 +31,22 @@
                             <div class="form-group col-lg-6">
                                 <label for="sel1">Select Colleges *</label>
                                 <select onchange="department_ajax(this.value)" name='collage' class="select2 form-control"  required>
-                                    <optgroup label="Colleges">
+                                    <option value="">Select Faculty</option>
                                         @foreach($faculites as $faculty)
                                         <option value="{{$faculty->id}}">{{$faculty->FACULTY_NAME}}</option>
                                         @endforeach
-                                    </optgroup>
+
                                 </select>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="sel1">Select Departement *</label>
                                 <select name="department" id="depart" class="form-control select2">
-                                        <option value="1"> First</option>
+
                                 </select>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="sel1">Select Courses *</label>
-                                <select class="select2 select2-multiple" name='course' multiple="multiple" required>
+                                <select class="select2 select2-multiple" name='courses[]' multiple="multiple" required>
                                       <optgroup label="courses">
                                       <option value="AK">IT</option>
                                       <option value="HI">CO2</option>

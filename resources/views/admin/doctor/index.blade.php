@@ -28,10 +28,10 @@
                             <tr class="gradeX">
                                 <td>{{$staff->STAFF_NAME}}</td>
                                 <td>
-                                    <label class="blue-label">{{$staff->FACULTY_ID}}</label>
+                                  <label class="blue-label">{{$staff->department->faculity->FACULTY_NAME}}</label>
                                 </td>
                                 <td>
-                                    <label class="blue-label">{{$staff->DEPARTMENT_ID}}</label>
+                                 <label class="blue-label">{{$staff->courses}}</label>
                                 </td>
                                 <th class="actions">
 
@@ -47,7 +47,7 @@
                                     </a>
                                     <!-- <a  class="on-default btn-info"  > <i class="fa fa-keyboard-o"></i> </a> -->
                                 </th>
-
+                                  @include('admin.courses.edit')
                                 <?php
                                 $route = route('doctor.destroy', $staff->id);
                                 $id = $staff->id;

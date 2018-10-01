@@ -17,7 +17,7 @@ class DoctorController extends Controller
   }
   public function store(Request $request)
   {
-
+      dd($request->all());
       $user=new User();
       $user->name = $request->name;
       $user->email = $request->email;
@@ -27,8 +27,8 @@ class DoctorController extends Controller
       $doctor = new Staff();
       $doctor->STAFF_NAME = $request->name;
       $doctor->phone=$request->code;
-      $doctor->FACULTY_ID=$request->college_id;
-      $doctor->DEPARTMENT_ID=$request->depart;
+      $doctor->FACULTY_ID=$request->collage;
+      $doctor->DEPARTMENT_ID=$request->department;
       $doctor->user_id=$user->id;
       $doctor->save();
       $cou_doc=new Staff_course();

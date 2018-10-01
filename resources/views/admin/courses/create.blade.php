@@ -23,11 +23,12 @@
                             <div class="form-group col-lg-6">
                                 <label for="sel1">Select Colleges *</label>
                                 <select onchange="department_ajax(this.value)" name='collage' class="select2 form-control"  required>
-                                    <optgroup label="Colleges">
+                                  <option value="">Select Faculty</option>
+
                                         @foreach($facultites as $faculty)
                                         <option value="{{$faculty->id}}">{{$faculty->FACULTY_NAME}}</option>
                                         @endforeach
-                                    </optgroup>
+
                                 </select>
                             </div>
                             <div class="form-group col-lg-6">

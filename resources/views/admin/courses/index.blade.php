@@ -46,6 +46,7 @@
                                         </i>
                                     </a>
                                     <!-- <a  class="on-default btn-info"  > <i class="fa fa-keyboard-o"></i> </a> -->
+
                                 </th>
                                 @include('admin.courses.edit')
                                 <?php

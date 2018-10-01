@@ -31,7 +31,7 @@ Route::group( [ 'prefix' => '/admin', 'middleware' => [ 'auth' ] ], function () 
 
         Route::get( '/{course}/edit', 'admin\CoursesController@edit' )->name( 'courses.edit' );
 
-        Route::put( '/{course}/update', 'admin\CoursesController@update' )->name( 'courses.update' );
+        Route::post( '/{course}/update', 'admin\CoursesController@update' )->name( 'courses.update' );
 
         Route::delete( '/{course}/destroy', 'admin\CoursesController@destroy' )->name( 'courses.destroy' );
     } );

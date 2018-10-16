@@ -34,7 +34,7 @@ class CoursesController extends Controller
     }//end of store
     public function update(Request $request, Course $course)
     {
-        dd($request->all(),$_FILES);
+//        dd($request->all());
         $image = $request->file('file');
         $name = time().'_'.md5($image->getClientOriginalName()).'.'.$image->getClientOriginalExtension();
         $destinationPath = public_path('/courses');

@@ -19,7 +19,7 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="emailAddress">Email address*</label>
-                            <input type="email" name="email" parsley-trigger="change" required placeholder="Enter email" class="form-control" id="emailAddress">
+                            <input type="email" name="email" parsley-trigger="change" value="{{$staff->user->email}}" required placeholder="Enter email" class="form-control" id="emailAddress">
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="pass1">Password*</label>
@@ -34,11 +34,9 @@
                         <div class="form-group col-lg-6">
                             <label for="sel1">Select Colleges *</label>
                             <select  onchange="department_ajax(this.value,{{$staff->DEPARTMENT_ID}} ,{{$staff->id}})" name='collage' class="select2 form-control"  required>
-                                <optgroup label="Colleges">
-                                    @foreach($facultites as $faculty)
-                                        <option @if($faculty->id == $staff->department->faculity->id) selected @endif value="{{$faculty->id}}">{{$faculty->FACULTY_NAME}}</option>
+                                    @foreach($faculites as $faculty)
+                                        <option @if($faculty->id == $staff->FACULTY_ID) selected @endif value="{{$faculty->id}}">{{$faculty->FACULTY_NAME}}</option>
                                     @endforeach
-                                </optgroup>
                             </select>
                         </div>
 
@@ -50,20 +48,22 @@
                         ?>
                         <div class="form-group col-lg-6">
                             <label for="sel1">Select Departement *</label>
-                            <select name="department" id="depart_{{$staff->id}}" class="form-control select2">
+                            <select onchange="courses_ajax(this.value,{{$staff->id}})" name="department" id="depart_{{$staff->id}}" class="form-control select2">
                                 @foreach($departments_select as $d)
                                     <option @if($d->id == $staff->DEPARTMENT_ID) selected @endif value="{{$d->id}}">{{$d->DEPARTMENT_NAME}}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
+                    <?php
+                        $courses=$staff->courses;
+                    ?>
                     <div class="form-group col-lg-6">
                         <label for="sel1">Select Courses *</label>
-                        <select class="select2 select2-multiple" name='course' multiple="multiple" required>
-                            <optgroup label="courses">
-                                <option value="AK">IT</option>
-                                <option value="HI">CO2</option>
-                            </optgroup>
+                        <select class="select2 select2-multiple" name='courses[]' id="courses_{{$staff->id}}" multiple="multiple" required>
+                            @foreach($courses as $course)
+                                <option selected value="{{$course->id}}">{{$course->COURSE_NAME}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

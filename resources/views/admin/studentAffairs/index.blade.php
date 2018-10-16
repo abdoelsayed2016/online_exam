@@ -9,7 +9,7 @@
             <div class="panel">
                 <div class="panel-body">
                     <div class="col-lg-12">
-                        @include('admin.doctor.create')
+                        @include('admin.studentAffairs.create')
                         <!-- /.modal -->
                     </div>
                     <!-- end col -->
@@ -19,30 +19,28 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Colleges</th>
-                                <th>Courses</th>
+                                <th>Phone</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($staffs as $staff)
+                            @foreach($sas as $sa)
                             <tr class="gradeX">
-                                <td>{{$staff->STAFF_NAME}}</td>
+                                <td>{{$sa->SA_NAME}}</td>
                                 <td>
-                                  <label class="blue-label">{{$staff->department->faculity->FACULTY_NAME}}</label>
+                                  <label class="blue-label">{{$sa->faculity->FACULTY_NAME}}</label>
                                 </td>
                                 <td>
-                                    @foreach($staff->courses as $course)
-                                        <label class="blue-label">{{$course->COURSE_NAME}}</label>
-                                    @endforeach
+                                    {{$sa->SA_PHONE_NUMBER}}
 
                                 </td>
                                 <th class="actions">
 
                                     <a href="#" class="on-default " data-toggle="modal"
-                                       data-target="#con-close-modal_{{$staff->id}}">
+                                       data-target="#con-close-modal_{{$sa->id}}">
                                         <i style="color: white;padding: 8px 10px;background-color: #10c469 !important;border: 1px solid #10c469 !important;
 " class="fa fa-pencil"></i></a>
-                                    <a href="#" data-toggle="modal" data-target="#dialog_{{$staff->id}}"
+                                    <a href="#" data-toggle="modal" data-target="#dialog_{{$sa->id}}"
                                        class="on-default ">
                                         <i style="color: white; background-color: #ff5b5b !important; border: 1px solid #ff5b5b !important;padding: 8px 10px;"
                                            class="fa fa-trash-o">
@@ -50,10 +48,10 @@
                                     </a>
                                     <!-- <a  class="on-default btn-info"  > <i class="fa fa-keyboard-o"></i> </a> -->
                                 </th>
-                                  @include('admin.doctor.edit')
+                                  @include('admin.studentAffairs.edit')
                                 <?php
-                                $route = route('doctor.destroy', $staff->id);
-                                $id = $staff->id;
+                                $route = route('studentAffairs.destroy', $sa->id);
+                                $id = $sa->id;
                                 $message = "Do You Want To Delete This Doctor ?";
                                 ?>
                                 @include('layouts.delete')

@@ -15,13 +15,15 @@ class CreateExamsTable extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->increments('id');
-            $table->DateTime('EXAM_STARTDATETIME')->nullable();
+            $table->text('time')->nullable();
             $table->integer('EXAM_DURATION')->nullable();
             $table->integer('COURSE_ID')->nullable();
             $table->integer('STAFF_ID')->nullable();
             $table->integer('SEMESTER_ID')->nullable();
             $table->double('EXAM_TOTAL')->nullable();
             $table->text('EXAM_NAME')->nullable();
+            $table->integer('type')->nullable();
+            $table->text('date')->nullable();
             $table->timestamps();
         });
     }

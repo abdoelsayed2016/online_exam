@@ -18,7 +18,7 @@ class CreateStudentCourceExamsTable extends Migration
             $table->integer('STUDENT_ID');
             $table->integer('COURSE_ID');
             $table->integer('EXAM_ID')->nullable();
-            $table->integer('SEMESTER_ID');
+            $table->integer('SEMESTER_ID')->nullable();
             $table->double('Total_Student_Score')->nullable();
             $table->timestamps();
         });

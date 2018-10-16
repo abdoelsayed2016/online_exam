@@ -21,7 +21,7 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="pass1">Password*</label>
-                                <input id="pass1" type="password" placeholder="Password" required class="form-control">
+                                <input id="pass1" name="password" type="password" placeholder="Password" required class="form-control">
                             </div>
                             <div class="form-group col-lg-6 ">
                                 <label>Phone</label>
@@ -40,17 +40,14 @@
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="sel1">Select Departement *</label>
-                                <select name="department" id="depart" class="form-control select2">
+                                <select onchange="courses_ajax(this.value)" name="department" id="depart" class="form-control select2">
 
                                 </select>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="sel1">Select Courses *</label>
-                                <select class="select2 select2-multiple" name='courses[]' multiple="multiple" required>
-                                      <optgroup label="courses">
-                                      <option value="AK">IT</option>
-                                      <option value="HI">CO2</option>
-                                      </optgroup>
+                                <select id="courses" class="select2 select2-multiple" name='courses[]' multiple="multiple" required>
+
                                 </select>
                             </div>
 

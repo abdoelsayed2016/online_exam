@@ -19,6 +19,8 @@ class CreateSasTable extends Migration
             $table->text('SA_PASSWORD')->nullable();
             $table->integer('SA_FACULTY_ID')->nullable();
             $table->text('SA_PHONE_NUMBER')->nullable();
+            $table->integer('user_id')->nullable();
+
             $table->timestamps();
         });
     }

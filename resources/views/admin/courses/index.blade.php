@@ -48,17 +48,20 @@
                                     <!-- <a  class="on-default btn-info"  > <i class="fa fa-keyboard-o"></i> </a> -->
 
                                 </th>
-                                @include('admin.courses.edit')
-                                <?php
-                                $route = route('courses.destroy', $course->id);
-                                $id = $course->id;
-                                $message = "Do You Want To Delete This Course ?";
-                                ?>
-                                @include('layouts.delete')
+
                             </tr>
                             @endforeach
                             </tbody>
                         </table>
+                        @foreach($courses as $course)
+                            @include('admin.courses.edit')
+                            <?php
+                            $route = route('courses.destroy', $course->id);
+                            $id = $course->id;
+                            $message = "Do You Want To Delete This Course ?";
+                            ?>
+                            @include('layouts.delete')
+                        @endforeach
                     </div>
                 </div>
                 <!-- end: panel body -->
@@ -83,11 +86,17 @@
                     srt=''
                     if(id)
                     {
+                        $('#depart_'+id).select2('destroy');
+
                         $('#depart_'+id).html(data)
+                        $('#depart_'+id).select2();
+
 
                     }else
                     {
+                        $('#depart').select2('destroy');
                         $('#depart').html(data)
+                        $('#depart').select2();
 
                     }
                 }

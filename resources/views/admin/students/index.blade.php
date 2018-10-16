@@ -1,38 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
-    <div class="col-sm-12 search-box">
-        <div class="panel">
-            <div class="form-group">
-                <fieldset class="the-fieldset">
-                    <legend class="the-legend"> Search</legend>
-                    <div class="form-group col-md-3">
-                        <label> Student Name</label>
-                        <div>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label> Colleges Name</label>
-                        <div>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label> Courses Name</label>
-                        <div>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-3  search-bin">
-                        <a class="btn btn-primary btn-rounded w-md waves-effect waves-light "> Search</a>
-                    </div>
-                </fieldset>
-            </div>
-        </div>
-    </div>
-</div>
+
 <div class="row">
     <div class="col-sm-12">
         <div class="panel">
@@ -63,13 +32,17 @@
                         @foreach($students as $student)
                         <tr class="gradeX">
 
-                            <td>Mohamed Ahmed</td>
+                            <td>{{$student->STUDENT_NAME}}</td>
                             <td>
-                                <label class="blue-label">FCI</label>
-                                <label class="purple-label">Science</label>
+                                {{$student->faculty->FACULTY_NAME}}
                             </td>
                             <td>
-                                First </td>
+                                @if($student->term==1)
+                                    First
+                                    @else
+                                    Second
+                                @endif
+                            </td>
                             <td class="actions">
                                 <a href="#" class="on-default " data-toggle="modal"
                                    data-target="#con-close-modal_{{$student->id}}">
@@ -110,7 +83,10 @@
               data      : {id:val,_token:"{{csrf_token()}}"}, //Forms name
 //              dataType  : 'json',
               success   : function(data) {
-                 $('#depart').html(data)
+                  $('#depart').select2('destroy')
+                  $('#depart').html(data)
+                  $('#depart').select2()
+
               }
           });
       }

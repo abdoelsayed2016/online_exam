@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Department;
 use App\Faculty;
 use App\Student;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,18 +19,47 @@ class StudentsController extends Controller
     }
     public function store(Request $request)
     {
-        $department = new Department();
-        $department->DEPARTMENT_NAME = $request->name;
-        $department->FACULTY_ID=$request->college_id;
-        $department->save();
-        return redirect()->route('departments.index');
+//        dd($request->all());
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role = 4;
+        $user->password = bcrypt($request->password);
+        $user->save();
+        $student = new Student();
+        $student->STUDENT_NAME = $request->name;
+        $student->FACULTY_ID	 = $request->faculty;
+        $student->DEPARTMENT_ID = $request->department;
+        $student->STUDENT_SSN = $request->snn;
+        $student->STUDENT_PASSWORD = bcrypt($request->password);
+        $student->STUDENT_EMAIL=$request->email;
+        $student->term=$request->term;
+        $student->semester=$request->year;
+        $student->phone=$request->phone;
+        $student->user_id=$user->id;
+        $student->save();
+        return redirect()->route('students.index');
     }//end of store
-    public function update(Request $request, Department $department)
+    public function update(Request $request, Student $student)
     {
-        $department->DEPARTMENT_NAME = $request->name;
-        $department->FACULTY_ID=$request->college_id;
-        $department->save();
-        return redirect()->route('departments.index');
+        $user = $student->user;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role = 4;
+        $user->password = bcrypt($request->password);
+        $user->save();
+        $student->STUDENT_NAME = $request->name;
+        $student->FACULTY_ID	 = $request->faculty;
+        $student->DEPARTMENT_ID = $request->department;
+        $student->STUDENT_SSN = $request->snn;
+        $student->STUDENT_PASSWORD = bcrypt($request->password);
+        $student->STUDENT_EMAIL=$request->email;
+        $student->term=$request->term;
+        $student->semester=$request->year;
+        $student->phone=$request->phone;
+        $student->user_id=$user->id;
+        $student->save();
+        return redirect()->route('students.index');
 
     }//end of update
     public function destroy(Department $department)

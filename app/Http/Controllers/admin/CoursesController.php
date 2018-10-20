@@ -6,6 +6,7 @@ use App\Course;
 use App\Faculty;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CoursesRequest;
 
 class CoursesController extends Controller
 {
@@ -14,7 +15,7 @@ class CoursesController extends Controller
         $facultites=Faculty::all();
         return view('admin.courses.index',compact('courses','facultites'));
     }
-    public function store(Request $request)
+    public function store(CoursesRequest $request)
     {
         $image = $request->file('file');
         $name = time().'_'.md5($image->getClientOriginalName()).'.'.$image->getClientOriginalExtension();
@@ -32,7 +33,7 @@ class CoursesController extends Controller
 //        dd($course);
         return redirect()->route('courses.index');
     }//end of store
-    public function update(Request $request, Course $course)
+    public function update(CoursesRequest $request, Course $course)
     {
 //        dd($request->all());
         $image = $request->file('file');

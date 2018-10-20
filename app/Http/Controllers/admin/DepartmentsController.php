@@ -6,6 +6,7 @@ use App\Department;
 use App\Faculty;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DepartmentsRequest;
 
 class DepartmentsController extends Controller
 {
@@ -14,7 +15,7 @@ class DepartmentsController extends Controller
         $faculites=Faculty::all();
         return view('admin.departments.index',compact('departments','faculites'));
     }
-    public function store(Request $request)
+    public function store(DepartmentsRequest $request)
     {
         $department = new Department();
         $department->DEPARTMENT_NAME = $request->name;
@@ -22,7 +23,7 @@ class DepartmentsController extends Controller
         $department->save();
         return redirect()->route('departments.index');
     }//end of store
-    public function update(Request $request, Department $department)
+    public function update(DepartmentsRequest $request, Department $department)
     {
         $department->DEPARTMENT_NAME = $request->name;
         $department->FACULTY_ID=$request->college_id;

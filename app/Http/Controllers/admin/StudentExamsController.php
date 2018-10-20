@@ -104,6 +104,16 @@ class StudentExamsController extends Controller
 
 
         }
+        //update
+        $Student_cource_exams=Student_cource_exam::where('COURSE_ID', $exam->COURSE_ID)
+                                ->where('STUDENT_ID', auth()->user()->student->id)
+                                ->where('EXAM_ID', $exam->id)->first();
+        if($Student_cource_exams)
+        {
+            $Student_cource_exams->Total_Student_Score=$your_grade;
+            $Student_cource_exams->save();
+        }
+
 
         echo $your_grade;
     }

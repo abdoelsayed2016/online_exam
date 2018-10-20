@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Course;
 use App\Faculty;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DoctorRequest;
 use App\Staff;
 use App\Staff_course;
 use App\User;
@@ -19,7 +20,7 @@ class DoctorController extends Controller
         return view('admin.doctor.index', compact('faculites', 'staffs'));
     }
 
-    public function store(Request $request)
+    public function store(DoctorRequest $request)
     {
 //        dd($request->all());
         $user = new User();
@@ -46,7 +47,7 @@ class DoctorController extends Controller
         return redirect()->route('doctor.index');
     }//end of store
 
-    public function update(Request $request, Staff $doctor)
+    public function update(DoctorRequest $request, Staff $doctor)
     {
         $user=$doctor->user;
         $user->name = $request->name;

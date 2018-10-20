@@ -42,6 +42,9 @@
                 <li>
                     <a href="{{route('doctorProfile.index')}}" class="waves-effect"><i class="fa fa-book" aria-hidden="true"></i><span>   Profile </span> </a>
                 </li>
+                <li>
+                    <a href="{{route('doctorProfile.exam.result')}}" class="waves-effect"><i class="fa fa-book" aria-hidden="true"></i><span>   Exam Result </span> </a>
+                </li>
 
         @endif
         @if(auth()->user()->role==3)

@@ -24,6 +24,7 @@ class CreateExamsTable extends Migration
             $table->text('EXAM_NAME')->nullable();
             $table->integer('type')->nullable();
             $table->text('date')->nullable();
+            $table->text('year')->nullable();
             $table->timestamps();
         });
     }

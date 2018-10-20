@@ -10,6 +10,7 @@ use App\Question;
 use App\Question_choice;
 use App\Question_ilos;
 use App\Staff;
+use App\Student_cource_exam;
 use Illuminate\Http\Request;
 
 class DoctorProfileContoller extends Controller
@@ -39,11 +40,16 @@ class DoctorProfileContoller extends Controller
         $exam->COURSE_ID = $request->course_id;
         $exam->STAFF_ID = auth()->user()->staff->id;
 
-        ///update all student records
-        ///
-        ///
-        ///
+
         $exam->save();
+        ///update all student records
+        $Student_cource_exams=Student_cource_exam::where('COURSE_ID',$request->course_id)->whereNull('EXAM_ID')->get();
+//        dd($Student_cource_exams,$request->course_id);
+        foreach ($Student_cource_exams as $kk)
+        {
+            $kk->EXAM_ID=$exam->id;
+            $kk->save();
+        }
         return redirect()->route('doctorProfile.index');
 
     }
@@ -157,4 +163,31 @@ class DoctorProfileContoller extends Controller
         //delete all question here
 
     }
+    public function showExamResult()
+    {
+        $exams=Exam::where('STAFF_ID',auth()->user()->staff->id)->get();
+//        dd($exams);
+        return view('doctor.showExams',compact('exams'));
+    }
+    public function showExamResultDetial(Request $request)
+    {
+        $student_cource_exam=Student_cource_exam::where('EXAM_ID',$request->id)->get();
+        $str='<table class="table table-responsive table-bordered table-striped"><tr>
+                 <th>Student</th>
+                 <th>Course</th>
+                 <th>Total</th>
+                </tr>';
+        foreach ($student_cource_exam as $s)
+        {
+            $str.='<tr>
+                    <th>'.$s->student->STUDENT_NAME.'</th>
+                    <th>'.$s->course->COURSE_NAME.'</th>
+                    <th>'.$s->Total_Student_Score.'</th>
+                </tr>';
+        }
+
+        $str.='</table>';
+        return $str;
+    }
+
 }

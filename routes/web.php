@@ -246,6 +246,10 @@ Route::group( [ 'prefix' => '/admin', 'middleware' => [ 'auth','doctor' ] ], fun
 
         Route::get( '/question/delete/{question}', 'admin\DoctorProfileContoller@deleteQuestion' )->name( 'doctorProfile.question.question' );
 
+        Route::get( '/exam/students', 'admin\DoctorProfileContoller@showExamResult' )->name( 'doctorProfile.exam.result' );
+        Route::post( '/exam/students', 'admin\DoctorProfileContoller@showExamResultDetial' )->name( 'doctorProfile.exam.result' );
+
+
     } );
 });
 

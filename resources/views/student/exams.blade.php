@@ -25,8 +25,8 @@
                             @foreach($Student_cource_exam as $k=>$Student_cource_exam)
                                 @if($Student_cource_exam->exam->date == $today_date )
 
-{{--                                    {{dd(($Student_cource_exam->exam->time),date("h:i"),date("h:i", strtotime('+'.$Student_cource_exam->exam->EXAM_DURATION.' minutes', strtotime($Student_cource_exam->exam->time))))}}--}}
-                                    @if(($Student_cource_exam->exam->time) <= date("h:i") && date("h:i") <= date("h:i", strtotime('+'.$Student_cource_exam->exam->EXAM_DURATION.' minutes', strtotime($Student_cource_exam->exam->time))))
+{{--                                    {{dd(($Student_cource_exam->exam->time),date("G:i"),date("G:i", strtotime('+'.$Student_cource_exam->exam->EXAM_DURATION.' minutes', strtotime($Student_cource_exam->exam->time))))}}--}}
+                                    @if(($Student_cource_exam->exam->time) <= date("G:i") && date("G:i") <= date("G:i", strtotime('+'.$Student_cource_exam->exam->EXAM_DURATION.' minutes', strtotime($Student_cource_exam->exam->time))))
                                         <tr class="gradeX">
                                             <th>{{$Student_cource_exam->exam->EXAM_NAME}}</th>
                                             <th> {{$Student_cource_exam->course->COURSE_NAME}}</th>

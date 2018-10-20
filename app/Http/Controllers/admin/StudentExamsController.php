@@ -17,7 +17,9 @@ class StudentExamsController extends Controller
         date_default_timezone_set('Africa/Cairo');
 
         $today_date = date('m/d/Y');
-        $Student_cource_exam = Student_cource_exam::where('EXAM_ID', '!=', 'null')->where('STUDENT_ID', auth()->user()->student->id)->get();
+        $Student_cource_exam = Student_cource_exam::where('EXAM_ID', '!=', 'null')->whereNull('Total_Student_Score')
+                                                        ->where('STUDENT_ID', auth()->user()->student->id)->get();
+//        dd($Student_cource_exam);
         return view('student.exams', compact('Student_cource_exam', 'today_date'));
 
     }
@@ -26,10 +28,10 @@ class StudentExamsController extends Controller
     {
 
         date_default_timezone_set('Africa/Cairo');
-        $endTime = date("h:i", strtotime('+' . $exam->EXAM_DURATION . ' minutes', strtotime($exam->time)));
+        $endTime = date("G:i", strtotime('+' . $exam->EXAM_DURATION . ' minutes', strtotime($exam->time)));
         $start_time = $exam->time;
 
-        if (($exam->time) <= date("h:i") && date("h:i") <= $endTime) {
+        if (($exam->time) <= date("G:i") && date("G:i") <= $endTime) {
             session()->put('endTime', $endTime);
 
 //            dd($exam);
@@ -116,6 +118,12 @@ class StudentExamsController extends Controller
 
 
         echo $your_grade;
+    }
+    public function time() {
+        date_default_timezone_set('Africa/Cairo');
+        $endTime = date("G:i");
+        return \Response::json( $endTime );
+
     }
 
 }

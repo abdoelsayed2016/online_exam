@@ -43,8 +43,13 @@
                     <a href="{{route('doctorProfile.index')}}" class="waves-effect"><i class="fa fa-book" aria-hidden="true"></i><span>   Profile </span> </a>
                 </li>
                 <li>
+                    <a href="{{route('doctorProfile.exam.creates')}}" class="waves-effect"><i class="fa fa-book" aria-hidden="true"></i><span> Create  Exam  </span> </a>
+                </li>
+                <li>
                     <a href="{{route('doctorProfile.exam.result')}}" class="waves-effect"><i class="fa fa-book" aria-hidden="true"></i><span>   Exam Result </span> </a>
                 </li>
+
+
 
         @endif
         @if(auth()->user()->role==3)
@@ -55,6 +60,11 @@
                 </li>
         @endif
         @if(auth()->user()->role==4)
+                <li>
+                    <a href="{{route('student.index')}}" class="waves-effect"><i class="fa fa-users"
+                                                                                  aria-hidden="true"></i>
+                        <span> Exams  </span> </a>
+                </li>
 
         @endif
 

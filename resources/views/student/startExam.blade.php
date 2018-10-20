@@ -33,7 +33,7 @@
                                 <?php
 
                                     $datetime1 = new DateTime($endTime);
-                                    $datetime2 = new DateTime(date("h:i:s", time()));
+                                    $datetime2 = new DateTime(date("G:i:s", time()));
                                     $interval = $datetime1->diff($datetime2);
 
                                     echo $interval->format('%h') . ":" . $interval->format('%i') . ":" . $interval->format('%s');
@@ -53,7 +53,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="m-h-10"></div>
-                    <form action="{{route('student.exam.answer',$exam->id)}}" method="post">
+                    <form action="{{route('student.exam.answer',$exam->id)}}" id="form" method="post">
                         {!! csrf_field() !!}
                     <div class="row">
                         <?php $i=1; ?>
@@ -294,21 +294,32 @@
                 var ts = temp[0].split(":");
                 $worked.html(ts[0] + ":" + ts[1] + ":" + ts[2]);
                 //
-                {{--$.ajax({--}}
-                        {{--type: "GET",--}}
-                        {{--url: '{{route('answerQuestion.time')}}',--}}
-                        {{--dataType: 'JSON',--}}
-                        {{--success: function (data) {--}}
-                        {{--if (data == "{{$endTime}}") {--}}
-                        {{--alert('TIME IS OUT THANK YOU')--}}
-                        {{--window.location = "{{route('answerQuestion.result',$exam)}}";--}}
-                        {{--}--}}
+                $.ajax({
+                    type: "GET",
+                    url: '{{route('student.time')}}',
+                    dataType: 'JSON',
+                    success: function (data) {
+                        if (data == "{{$endTime}}") {
 
-                        {{--},--}}
-                        {{--error: function (XMLHttpRequest, textStatus, errorThrown) {--}}
-                        {{--}--}}
+                            $.ajax({
+                                type: "POST",
+                                url: "{{route('student.exam.answer',$exam->id)}}",
+                                data: $('#form').serialize(), // serializes the form's elements.
+                                success: function(data)
+                                {
+                                    //alert(data); // show response from the php script.
+                                }
+                            });
+                            alert('TIME IS OUT THANK YOU')
 
-                        {{--});--}}
+                            window.location = "{{route('student.exam.result', $exam->id)}}";
+                        }
+
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
+
+                });
 
                     timer = setTimeout(update, 1000);
 

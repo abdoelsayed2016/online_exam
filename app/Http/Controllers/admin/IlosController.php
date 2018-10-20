@@ -9,6 +9,7 @@ use App\Ilo_type;
 use App\Ilos;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\IlosRequest;
 
 class IlosController extends Controller
 {
@@ -19,7 +20,7 @@ class IlosController extends Controller
         return view('admin.ilos.index',compact('faculties','ilos','ilos_types',''));
     }
 
-    public function store(Request $request)
+    public function store(IlosRequest $request)
     {
         $iols = new Ilos();
         $iols->COURSE_ID = $request->course_id;
@@ -28,7 +29,7 @@ class IlosController extends Controller
         $iols->save();
         return redirect()->route('ilos.index');
     }//end of store
-    public function update(Request $request,Ilos $ilos)
+    public function update(IlosRequest $request,Ilos $ilos)
     {
         $ilos->ILO_TEXT = $request->ilos_name;
         $ilos->ILO_TYPE_ID = $request->type_id;

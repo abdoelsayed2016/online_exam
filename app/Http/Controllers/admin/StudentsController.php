@@ -8,6 +8,7 @@ use App\Student;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StudentRequest;
 
 class StudentsController extends Controller
 {
@@ -17,7 +18,7 @@ class StudentsController extends Controller
         $students=Student::all();
         return view('admin.students.index',compact('faculites','students'));
     }
-    public function store(Request $request)
+    public function store(StudentRequest $request)
     {
 //        dd($request->all());
         $user = new User();
@@ -40,7 +41,7 @@ class StudentsController extends Controller
         $student->save();
         return redirect()->route('students.index');
     }//end of store
-    public function update(Request $request, Student $student)
+    public function update(StudentRequest $request, Student $student)
     {
         $user = $student->user;
         $user->name = $request->name;

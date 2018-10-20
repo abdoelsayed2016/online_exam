@@ -12,6 +12,7 @@ use App\Question_ilos;
 use App\Staff;
 use App\Student_cource_exam;
 use Illuminate\Http\Request;
+use App\Http\Requests\DoctorProfileRequest;
 
 class DoctorProfileContoller extends Controller
 {
@@ -28,7 +29,7 @@ class DoctorProfileContoller extends Controller
         return view('doctor.createExam', compact('faculites', 'staffs'));
     }
 
-    public function storeExam(Request $request)
+    public function storeExam(DoctorProfileRequest $request)
     {
         $exam = new Exam();
         $exam->EXAM_NAME = $request->name;

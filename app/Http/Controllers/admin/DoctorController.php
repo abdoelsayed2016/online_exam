@@ -23,6 +23,10 @@ class DoctorController extends Controller
     public function store(DoctorRequest $request)
     {
 //        dd($request->all());
+        $user=User::where('email', $request->email)->first();
+        if($user){
+            return back()->withErrors(['error'=>'Email Found Before']);
+        }
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -49,7 +53,12 @@ class DoctorController extends Controller
 
     public function update(DoctorRequest $request, Staff $doctor)
     {
-//        dd($request->all());
+        $user=User::where('email', $request->email)->where('id','!=',$doctor->user->id)->first();
+//        dd($user);
+        if($user){
+            return back()->withErrors(['error'=>'Email Found Before']);
+        }
+//        dd($user);
         $user=$doctor->user;
         $user->name = $request->name;
         $user->email = $request->email;

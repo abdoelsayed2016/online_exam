@@ -39,7 +39,7 @@
                                         {{--</div>--}}
                                         <div class="form-group col-lg-12">
                                             <label for="sel1" class="m-b-15 ">Select Courses *</label>
-                                            <select class="form-control select2">
+                                            <select readonly class="form-control">
                                                 <option > {{$ilo->course->COURSE_NAME}}</option>
                                             </select>
                                         </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Course;
 use App\Department;
 use App\Faculty;
+use App\Http\Requests\IlosUpdateRequest;
 use App\Ilo_type;
 use App\Ilos;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class IlosController extends Controller
         $iols->save();
         return redirect()->route('ilos.index');
     }//end of store
-    public function update(IlosRequest $request,Ilos $ilos)
+    public function update(IlosUpdateRequest $request,Ilos $ilos)
     {
         $ilos->ILO_TEXT = $request->ilos_name;
         $ilos->ILO_TYPE_ID = $request->type_id;

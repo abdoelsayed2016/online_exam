@@ -64,8 +64,8 @@ class DoctorController extends Controller
         $doctor->user_id = $user->id;
         $doctor->save();
 
-        $courses=$doctor->courses;
-        foreach ($courses as $course)
+        $course_doctor=Staff_course::where('STAFF_ID',$doctor->id)->get();
+        foreach ($course_doctor as $course)
         {
             $course->delete();
         }

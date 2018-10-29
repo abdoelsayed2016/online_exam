@@ -50,6 +50,7 @@ class IlosController extends Controller
         $departments=Department::where('FACULTY_ID',$faculty_id)->get()->pluck('id')->toArray();
         $courses=Course::whereIn('DEPARTMENT_ID',$departments)->get();
         $data='';
+//        dd($departments,$courses);
 
         foreach ($courses as $course)
         {

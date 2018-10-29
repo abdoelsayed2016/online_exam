@@ -20,6 +20,10 @@ class StudentAffairsController extends Controller
 
     public function store(StudentAffairsRequest $request)
     {
+        $user=User::where('email', $request->email)->first();
+        if($user){
+            return back()->withErrors(['error'=>'Email Found Before']);
+        }
 //        dd($request->all());
         $user = new User();
         $user->name = $request->name;

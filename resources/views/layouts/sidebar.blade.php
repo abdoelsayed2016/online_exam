@@ -37,6 +37,10 @@
             <li>
                 <a href="{{route('IlosType.index')}}" class="waves-effect"><i class="fa fa-book" aria-hidden="true"></i><span>   Ilos Type </span> </a>
             </li>
+            <li>
+                <a href="{{route('ilos.index')}}" class="waves-effect"><i class="fa fa-book" aria-hidden="true"></i><span>   Ilos  </span> </a>
+            </li>
+
         @endif
         @if(auth()->user()->role==2)
                 <li>
@@ -57,7 +61,16 @@
                     <a href="{{route('students.index')}}" class="waves-effect"><i class="fa fa-users"
                                                                                   aria-hidden="true"></i>
                         <span> Students  </span> </a>
+
                 </li>
+                <li>
+                    <a href="{{route('studentCourses.index')}}" class="waves-effect"><i class="fa fa-users"
+                                                                                  aria-hidden="true"></i>
+                        <span> Register </span> </a>
+
+                </li>
+
+
         @endif
         @if(auth()->user()->role==4)
                 <li>

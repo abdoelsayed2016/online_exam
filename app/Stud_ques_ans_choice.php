@@ -10,4 +10,8 @@ class Stud_ques_ans_choice extends Model
     {
         return $this->belongsTo('App\Question','question_id');
     }
+    public function choices()
+    {
+        return $this->belongsTo('App\Question_choice','choice');
+    }
 }

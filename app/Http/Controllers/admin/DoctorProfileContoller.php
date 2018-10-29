@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Course;
 use App\Exam;
 use App\Faculty;
 use App\Http\Controllers\Controller;
@@ -10,6 +11,8 @@ use App\Question;
 use App\Question_choice;
 use App\Question_ilos;
 use App\Staff;
+use App\Stud_ques_ans_choice;
+use App\Student;
 use App\Student_cource_exam;
 use Illuminate\Http\Request;
 use App\Http\Requests\DoctorProfileRequest;
@@ -173,22 +176,47 @@ class DoctorProfileContoller extends Controller
     public function showExamResultDetial(Request $request)
     {
         $student_cource_exam=Student_cource_exam::where('EXAM_ID',$request->id)->get();
+
         $str='<table class="table table-responsive table-bordered table-striped"><tr>
                  <th>Student</th>
                  <th>Course</th>
+                 <th>Question</th>
                  <th>Total</th>
                 </tr>';
         foreach ($student_cource_exam as $s)
         {
+            $stud_ques_ans_choices=Stud_ques_ans_choice::where('exam_id',$request->id)->where('student_id',$s->student->id)->get();
+
             $str.='<tr>
                     <th>'.$s->student->STUDENT_NAME.'</th>
                     <th>'.$s->course->COURSE_NAME.'</th>
-                    <th>'.$s->Total_Student_Score.'</th>
+                    <Th><a href="'.route('doctorProfile.exam.question',[$s->EXAM_ID,$s->student->id,$s->course->id]).'" >Questions</a></Th>
+                    <th>'.($s->Total_Student_Score+$stud_ques_ans_choices->sum('point')).'</th>
                 </tr>';
         }
 
         $str.='</table>';
         return $str;
     }
+    public  function showExamQuestion(Exam $exam,Student $student,Course $course)
+    {
+//        $questions=$exam->questions;
+        $stud_ques_ans_choices=Stud_ques_ans_choice::where('exam_id',$exam->id)->where('student_id',$student->id)->get();
+//        dd($stud_ques_ans_choices);
+        return view('doctor.showQuestions',compact('stud_ques_ans_choices','exam','student','course','questions'));
+    }
+    public function storeGradeQuestion(Request $request)
+    {
+       // dd($request->all());
+        foreach ($request->stud_ques as $k=>$id)
+        {
+            $Stud_ques_ans_choice= Stud_ques_ans_choice::find($id);
+            $Stud_ques_ans_choice->point=$request->grades[$k];
+            $Stud_ques_ans_choice->save();
+
+        }
+        return redirect()->back();
+    }
+
 
 }

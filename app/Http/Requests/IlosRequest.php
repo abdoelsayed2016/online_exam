@@ -34,9 +34,9 @@ class IlosRequest extends FormRequest
      {
          return [
              'type_id.required' => 'A Name is required',
-             'faculty_id.required'  => 'A Email is required',
-             'course_id.required' => 'A Password is required',
-             'ilos_name.required'  => 'A code is required',
+             'faculty_id.required'  => 'A faculty is required',
+             'course_id.required' => 'A course is required',
+             'ilos_name.required'  => 'A ilos is required',
          ];
      }
    }

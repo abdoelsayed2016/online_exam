@@ -15,8 +15,11 @@ class CreateStudQuesAnsChoicesTable extends Migration
     {
         Schema::create('stud_ques_ans_choices', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('QUESTION_CHOICE_ID');
-            $table->integer('STUDENT_QUESTIONS_ANSWERS_ID');
+            $table->integer('question_id');
+            $table->text('choice');
+            $table->integer('student_id');
+            $table->integer('exam_id');
+            $table->float('point');
             $table->timestamps();
         });
     }

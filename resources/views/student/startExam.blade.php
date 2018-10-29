@@ -339,7 +339,32 @@
 
                 if (ss[0] == 00 && ss[1] == 00 && ss[2] == 00) {
                     stop();
-                    //iam will work here
+                    $.ajax({
+                        type: "GET",
+                        url: '{{route('student.time')}}',
+                        dataType: 'JSON',
+                        success: function (data) {
+                            {{--if (data == "{{$endTime}}") {--}}
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "{{route('student.exam.answer',$exam->id)}}",
+                                    data: $('#form').serialize(), // serializes the form's elements.
+                                    success: function(data)
+                                    {
+                                        //alert(data); // show response from the php script.
+                                    }
+                                });
+                                alert('TIME IS OUT THANK YOU')
+
+                                window.location = "{{route('student.exam.result', $exam->id)}}";
+//                            }
+
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        }
+
+                    });
                 }
                 timer2 = setTimeout(update2, 1000);
 

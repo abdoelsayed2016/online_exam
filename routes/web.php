@@ -249,6 +249,8 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'doctor']], functio
 
         Route::get('/exam/students', 'admin\DoctorProfileContoller@showExamResult')->name('doctorProfile.exam.result');
         Route::post('/exam/students', 'admin\DoctorProfileContoller@showExamResultDetial')->name('doctorProfile.exam.result');
+        Route::get('/exam/questions/{exam}/{student}/{course}', 'admin\DoctorProfileContoller@showExamQuestion')->name('doctorProfile.exam.question');
+        Route::post('/exam/questions', 'admin\DoctorProfileContoller@storeGradeQuestion')->name('doctorProfile.post.question');
 
 
     });

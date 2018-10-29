@@ -25,7 +25,7 @@ class StudentAffairsRequest extends FormRequest
      {
          return [
              'name'=>'required',
-             'email'=>'required',
+             'email'=>'required|unique:users',
              'password'=>'required',
              'code'=>'required',
              'collage'=>'required',
@@ -36,6 +36,7 @@ class StudentAffairsRequest extends FormRequest
      {
          return [
              'name.required' => 'A Name is required',
+             'email.unique'  => 'A Email is Aready exists',
              'email.required'  => 'A Email is required',
              'password.required' => 'A Password is required',
              'code.required'  => 'A code is required',

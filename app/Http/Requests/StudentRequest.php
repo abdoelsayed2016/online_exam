@@ -27,7 +27,7 @@ class StudentRequest extends FormRequest
        {
            return [
                'name'=>'required',
-               'email'=>'required',
+               'email'=>'required|unique:users',
                'password'=>'required',
                'faculty'=>'required',
                'department'=>'required',
@@ -42,6 +42,7 @@ class StudentRequest extends FormRequest
            return [
                'name.required' => 'A Name is required',
                'email.required'  => 'A Email is required',
+               'email.unique'  => 'A Email is Aready exists',
                'password.required' => 'A Password is required',
                'faculty.required'  => 'A Faculty is required',
                'department.required' => 'A Department is required',

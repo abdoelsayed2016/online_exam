@@ -49,6 +49,7 @@ class DoctorController extends Controller
 
     public function update(DoctorRequest $request, Staff $doctor)
     {
+//        dd($request->all());
         $user=$doctor->user;
         $user->name = $request->name;
         $user->email = $request->email;
@@ -80,6 +81,7 @@ class DoctorController extends Controller
     }
     public function destroy(Staff $doctor)
     {
+        $doctor->user->delete();
         $doctor->delete();
         return redirect()->route('doctor.index');
 

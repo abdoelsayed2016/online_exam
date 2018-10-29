@@ -23,7 +23,7 @@
                         </div>
                         <div class="form-group col-lg-6">
                             <label for="pass1">Password*</label>
-                            <input id="pass1" type="password" placeholder="Password" required class="form-control">
+                            <input id="pass1" name="password" type="password" placeholder="Password" required class="form-control">
                         </div>
 
                         <div class="form-group col-lg-6 ">

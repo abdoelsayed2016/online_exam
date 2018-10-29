@@ -39,6 +39,7 @@ class StudentAffairsController extends Controller
 
     public function update(StudentAffairsRequest $request, Sa $sa)
     {
+//        dd($request->all());
         $user=$sa->user;
         $user->name = $request->name;
         $user->email = $request->email;
@@ -58,6 +59,7 @@ class StudentAffairsController extends Controller
     }
     public function destroy(Sa $sa)
     {
+        $sa->user->delete();
         $sa->delete();
         return redirect()->route('studentAffairs.index');
 
